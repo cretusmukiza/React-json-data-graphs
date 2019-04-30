@@ -1,5 +1,35 @@
 .App {
   text-align: center;
+
+}
+.app{
+  display: flex;
+  flex-direction: column;
+
+}
+nav{
+  display: flex;
+  height:10vh;
+  background:#0288D1;
+  margin-bottom: 10rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width:100%;
+  margin-bottom: 0;
+
+}
+nav a{
+  color:white;
+  margin-left:2rem;
+  text-decoration: none;
+  
+}
+nav a:last-child{
+  margin-right:2rem;
+}
+.active{
+  color:#B3E5FC
 }
 
 .App-logo {
