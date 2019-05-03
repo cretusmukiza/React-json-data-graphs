@@ -35,8 +35,16 @@ class GenderChart extends Component{
         )    
         
         var finalUser=graph.map((user,index)=>{
-            const dropout_male=user.dropout_male;
-            const dropout_female=user.dropout_female;
+            var dropout_male=null;
+            var dropout_female=null;
+            if(isNaN(user.dropout_female) || isNaN(user.dropout_male)){
+                dropout_male=user.dropout_male;
+                dropout_female=user.dropout_female;
+            }
+            else{
+                dropout_male=parseInt(user.dropout_male);
+                dropout_female=parseInt(user.dropout_female);
+            }            
             const key=user.school;
             return [key,dropout_male,dropout_female];
         } ) 
@@ -53,6 +61,13 @@ class GenderChart extends Component{
         })
         const linedata=_.sortedUniq(regions);    
         console.log(this.state.width);
+        const width=window.innerWidth
+        var screenWidth="180%";
+        var screeHeight="494px"  
+        if(width<600){
+         screenWidth="100%";
+         screeHeight="400px"  
+        }
         if(this.state.data.length>0){
         return(
         <div className={"my-pretty-chart-container"}>
@@ -65,8 +80,8 @@ class GenderChart extends Component{
             </select>
             <div className={"my-pretty-chart-container"}>
                 <Chart
-                    width={this.state.width}
-                     height={'494px'}
+                    width={screenWidth}
+                     height={screeHeight}
                     chartType="Bar"
                     loader={<div>Loading Chart</div>}
                     data={this.state.data}

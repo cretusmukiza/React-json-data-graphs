@@ -48,6 +48,13 @@ class RegionChart extends Component{
             }
             return [key,regionSum];
         } ) 
+        const width=window.innerWidth
+        var screenWidth="900px";
+        var screeHeight="494px"  
+        if(width<600){
+         screenWidth="100%";
+         screeHeight="400px"  
+        }
 
       
        
@@ -55,8 +62,8 @@ class RegionChart extends Component{
         return(
         <div className={"my-pretty-chart-container"}>
             <Chart
-            width={'800px'}
-            height={'494px'}
+            width={screenWidth}
+            height={screeHeight}
             chartType="Bar"
             loader={<div>Loading Chart</div>}
             data={finalUser}

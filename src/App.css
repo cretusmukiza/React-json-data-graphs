@@ -5,6 +5,7 @@
 .app{
   display: flex;
   flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
 
 }
 nav{
@@ -59,5 +60,30 @@ nav a:last-child{
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .app{
+    min-height: 100vh;
+    height: auto;
+    overflow-y: scroll;
+  }
+  nav{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    height:20vh;
+  }
+  nav a{
+    margin-right:none;
+    margin-bottom:1rem;
+  }
+  nav a:first-child{
+    margin-top:1rem;
+  }
+  select{
+    width:50%;
   }
 }

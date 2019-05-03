@@ -8,25 +8,14 @@ class DistrictChart extends Component{
     constructor(props){
         super(props);
         this.state={
-            region:"",
-            data:[],
-            width:"180%"
-        }
-        this.handleRegion=this.handleRegion.bind(this);
-        this.filterRegion=this.filterRegion.bind(this);
+             width:"180%"
+        }   
     }
-    handleRegion(event){
-        if(event.target.value!=="REGION"){
-            this.setState({region:event.target.value})
-        }
-        this.filterRegion(event.target.value)
-    }
-    filterRegion(index){
-        const selectedRegion=data.filter((region)=>(
-            region.region===index || region.region==="REGION"
-        ))
-    
-        const graph=selectedRegion.map((regions)=>{
+ 
+  
+    render(){
+        const width=window.innerWidth
+        const graph=data.map((regions)=>{
             const result=_.pick(regions,['district','total_dropout']);
          
             return  result; 
@@ -56,66 +45,38 @@ class DistrictChart extends Component{
 
             }
             return [key,regionSum];
-        } )  
-        
-     
-       
-        this.setState({
-            data:finalUser,
-            
-        });
-    }
-    render(){
-        const regions=data.map((region)=>{
-        
-            return region.region
-        })
-        const linedata=_.sortedUniq(regions);    
-        console.log(this.state.data);
-        if(this.state.data.length>0){
+        } )
+        var screenWidth="900px";
+        var screeHeight="600px"  
+        if(width<600){
+         screenWidth="100%";
+         screeHeight="100%"  
+        }
+
+      
         return(
-        <div className={"my-pretty-chart-container"}>
-            <select name="region" onChange={this.handleRegion}>
-               {
-                   linedata.map((line,index)=>(
-                       <option key={index}>{line}</option>
-                   ))
-               }
-            </select>
-            <div className={"my-pretty-chart-container"}>
+        <div className={"my-pretty-chart-container"}>         
                
                 <Chart
-                    width={'900px'}
-                    height={'600px'}
+                    width={screenWidth}
+                    height={screeHeight}
                     chartType="PieChart"
                     loader={<div>Loading Chart</div>}
                      data={
-                            this.state.data
+                            finalUser
                     }
                     options={{
                     title: `Dropout in  districts of ${this.state.region} region`,
+                    pieHole:0.3,
+                    is3D:false
                      }}
                     rootProps={{ 'data-testid': '1' }}
                 />
             </div>
-        </div>
+        
         )
-        }
-        else{
-            return(
-                <div>
-                <select name="region" onChange={this.handleRegion}>
-               {
-                   linedata.map((line,index)=>(
-                       <option key={index}>{line}</option>
-                   ))
-               }
-            </select>
-            <p>Please select the region</p>
-            </div>
-
-            )
-        }
+        
+     
     }
 }
 export default DistrictChart;

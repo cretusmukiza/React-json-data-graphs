@@ -14,7 +14,7 @@ class SchoolChart extends Component{
         this.state={
             region:"",
             data:[],
-            width:"130%"
+            width:"100%"
         }
         this.handleRegion=this.handleRegion.bind(this);
         this.filterRegion=this.filterRegion.bind(this);
@@ -39,7 +39,14 @@ class SchoolChart extends Component{
         )    
         
         var finalUser=graph.map((user,index)=>{
-            const dropouts=user.total_dropout
+            var dropouts=null;
+            if(isNaN(user.total_dropout)){
+                dropouts=user.total_dropout;
+            }
+            else{
+                dropouts=parseInt(user.total_dropout);
+            }
+            
             const key=user.school;
             return [key,dropouts];
         } ) 
@@ -48,14 +55,25 @@ class SchoolChart extends Component{
             data:finalUser,
             width:width
         });
+
     }
     render(){
         const regions=data.map((region)=>{
         
             return region.region
         })
+
         const linedata=_.sortedUniq(regions);    
         console.log(this.state.width);
+        const width=window.innerWidth
+        var screenWidth="180%";
+        var screeHeight="494px"  
+        if(width<600){
+         screenWidth="200%";
+         screeHeight="400px"  
+        }
+        console.log(this.state.data);
+
         if(this.state.data.length>0){
         return(
         <div className={"my-pretty-chart-container"}>
@@ -66,26 +84,31 @@ class SchoolChart extends Component{
                    ))
                }
             </select>
-            <div className={"my-pretty-chart-container"}>
-                <Chart
-                    width={this.state.width}
-                     height={'494px'}
-                    chartType="Bar"
-                    loader={<div>Loading Chart</div>}
-                    data={this.state.data}
-                    options={{  
-                     // Material design options
-                    chart: {
-                     title: `Total dropout vs school(${this.state.region} REGION)`
+            <Chart
+            width={screenWidth}
+            height={screeHeight}
+            chartType="Bar"
+            loader={<div>Loading Chart</div>}
+            data={this.state.data}
+            options={{  
+             // Material design options
+            chart: {
+            title: 'Total dropout vs Region',
+            vAxis:{
+                minValue:10,
+                maxValue:100
+            }
      
-                     },
+            },
             }}
             // For tests
-            rootProps={{ 'data-testid': '1' }}
+            rootProps={{ 'data-testid': '6' }}
             />
+            
+              
      
             </div>
-        </div>
+        
         )
         }
         else{
