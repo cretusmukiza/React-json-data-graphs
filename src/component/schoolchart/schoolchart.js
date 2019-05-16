@@ -3,7 +3,6 @@ import {Chart} from 'react-google-charts';
 import {data} from '../data.js';
 import _ from 'lodash';
 import { type } from 'os';
-import '../chart/chart.css';
 const filter=()=>{
     let newArray=_.omit(data,['district','ward','school','dropout_male','dropout_female']);
     return newArray;

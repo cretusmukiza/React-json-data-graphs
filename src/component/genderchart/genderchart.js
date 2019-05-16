@@ -3,7 +3,6 @@ import {Chart} from 'react-google-charts';
 import {data} from '../data.js';
 import _ from 'lodash';
 import { type } from 'os';
-import '../chart/chart.css';
 class GenderChart extends Component{
     constructor(props){
         super(props);
