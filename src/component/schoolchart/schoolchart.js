@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import {Chart} from 'react-google-charts';
-import {data} from '../data.js';
+import {data} from '../../data.js';
+import '../chart/chart.css';
 import _ from 'lodash';
+import Nav from '../nav/nav'
 import { type } from 'os';
 const filter=()=>{
     let newArray=_.omit(data,['district','ward','school','dropout_male','dropout_female']);
@@ -65,8 +67,8 @@ class SchoolChart extends Component{
         const linedata=_.sortedUniq(regions);    
         console.log(this.state.width);
         const width=window.innerWidth
-        var screenWidth="180%";
-        var screeHeight="494px"  
+        var screenWidth="80%";
+        var screeHeight="400px"  
         if(width<600){
          screenWidth="200%";
          screeHeight="400px"  
@@ -75,7 +77,11 @@ class SchoolChart extends Component{
 
         if(this.state.data.length>0){
         return(
-        <div className={"my-pretty-chart-container"}>
+            <div className="app">  
+            <Nav />  
+            <div className="welcome" >  
+            <div className="welcome-menu">
+            <div className={"my-pretty-chart-container"}>
             <select name="region" onChange={this.handleRegion}>
                {
                    linedata.map((line,index)=>(
@@ -107,6 +113,10 @@ class SchoolChart extends Component{
               
      
             </div>
+            </div>   
+          </div>
+          </div>
+
         
         )
         }

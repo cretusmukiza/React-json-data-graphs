@@ -1,11 +1,15 @@
 .App {
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
+
 
 }
+
 .app{
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
+  
 
 }
 nav{

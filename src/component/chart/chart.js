@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Chart} from 'react-google-charts';
-import {data} from '../data.js';
+import {data} from '../../data.js';
+import './chart.css';
 import _ from 'lodash';
 import { type } from 'os';
 const filter=()=>{
@@ -49,8 +50,8 @@ class RegionChart extends Component{
             return [key,regionSum];
         } ) 
         const width=window.innerWidth
-        var screenWidth="900px";
-        var screeHeight="494px"  
+        var screenWidth="103%";
+        var screeHeight="400px"  
         if(width<600){
          screenWidth="100%";
          screeHeight="400px"  

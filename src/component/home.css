@@ -60,3 +60,8 @@ input::placeholder{
     padding-left:2rem;
     color:red
 }
+.status{
+    display: flex;
+    justify-content: center;
+    
+}

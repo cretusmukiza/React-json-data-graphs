@@ -2,12 +2,13 @@ import React,{Component} from 'react';
 import './home.css';
 import {Link} from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-class Home extends  Component{
+class Signup extends  Component{
     constructor(props){
         super(props);
         this.state={
             email:'',
             password:'',
+            confirm:'',
             error:"",
             displayError:false,
             status:false
@@ -24,8 +25,8 @@ class Home extends  Component{
     }
     onSubmit(event){
         event.preventDefault();
-        const {email,password}=this.state;
-        if(email==="" || password===""){
+        const {email,password,confirm}=this.state;
+        if(email==="" || password==="" || confirm===""){
             this.setState({
                 error:"Please fill details",
                 displayError:true
@@ -35,6 +36,7 @@ class Home extends  Component{
             this.setState({
                 error:"",
                 displayError:false
+
             })
         }
     }
@@ -42,7 +44,7 @@ class Home extends  Component{
         return(
             <div className="home">
             <div className="form">
-                <h2>login into your account</h2>
+                <h2>Create your Account</h2>
                 <form  onSubmit={this.onSubmit}>
                     <input type="text" name="email" placeholder="Email address" onChange={this.onChange} 
                         value={this.state.email}
@@ -50,7 +52,10 @@ class Home extends  Component{
                     <input type="password" name="password" placeholder="Password" onChange={this.onChange}
                         value={this.state.password}
                     />
-                    <input type="submit" value="log in" />
+                    <input type="password" name="confirm" placeholder="Confirm" onChange={this.onChange}
+                        value={this.state.confirm}
+                    />
+                    <input type="submit" value="Submit" />
                     <div className="errors" style={{
                         display:`${this.state.displayError?"flex":"none"}`
                     }}  >
@@ -63,7 +68,7 @@ class Home extends  Component{
                 </form>
                 
                 <div className="form-footer">
-                    <p>Need an account? <Link to="/signup">Signup</Link></p>
+                    <p>Have an account? <Link to="/">Login</Link></p>
                 </div>
             </div>
             
@@ -72,4 +77,4 @@ class Home extends  Component{
         )
     }
 }
-export default Home;
+export default Signup;

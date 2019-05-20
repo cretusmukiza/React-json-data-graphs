@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Chart} from 'react-google-charts';
-import {data} from '../data.js';
+import {data} from '../../data.js';
 import _ from 'lodash';
 import { type } from 'os';
 import '../chart/chart.css';
@@ -46,7 +46,7 @@ class DistrictChart extends Component{
             }
             return [key,regionSum];
         } )
-        var screenWidth="900px";
+        var screenWidth="103%";
         var screeHeight="600px"  
         if(width<600){
          screenWidth="100%";

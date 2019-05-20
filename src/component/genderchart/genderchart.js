@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Chart} from 'react-google-charts';
-import {data} from '../data.js';
+import {data} from '../../data.js';
+import  '../chart/chart.css';
 import _ from 'lodash';
 import { type } from 'os';
 class GenderChart extends Component{
@@ -61,7 +62,7 @@ class GenderChart extends Component{
         const linedata=_.sortedUniq(regions);    
         console.log(this.state.width);
         const width=window.innerWidth
-        var screenWidth="180%";
+        var screenWidth="103%";
         var screeHeight="494px"  
         if(width<600){
          screenWidth="100%";
