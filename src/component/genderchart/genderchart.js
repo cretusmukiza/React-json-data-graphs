@@ -3,6 +3,7 @@ import {Chart} from 'react-google-charts';
 import {data} from '../../data.js';
 import  '../chart/chart.css';
 import _ from 'lodash';
+import Nav from '../nav/nav';
 import { type } from 'os';
 class GenderChart extends Component{
     constructor(props){
@@ -63,14 +64,18 @@ class GenderChart extends Component{
         console.log(this.state.width);
         const width=window.innerWidth
         var screenWidth="103%";
-        var screeHeight="494px"  
+        var screeHeight="405px"  
         if(width<600){
          screenWidth="100%";
          screeHeight="400px"  
         }
         if(this.state.data.length>0){
         return(
-        <div className={"my-pretty-chart-container"}>
+            <div>
+            <Nav />  
+            <div className="welcome" >  
+            <div className="welcome-menu">
+            <div className={"my-pretty-chart-container"}>
             <select name="region" onChange={this.handleRegion}>
                {
                    linedata.map((line,index)=>(
@@ -98,10 +103,18 @@ class GenderChart extends Component{
      
             </div>
         </div>
+            </div>   
+          </div>
+          </div>
+        
         )
         }
         else{
             return(
+                <div>
+                <Nav />  
+                <div className="welcome" >  
+                <div className="welcome-menu">
                 <div>
                 <select name="region" onChange={this.handleRegion}>
                {
@@ -112,6 +125,10 @@ class GenderChart extends Component{
             </select>
             <p>Please select the region</p>
             </div>
+                </div>   
+              </div>
+              </div>
+               
 
             )
         }

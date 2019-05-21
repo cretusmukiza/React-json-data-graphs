@@ -61,10 +61,14 @@ class RegionChart extends Component{
        
         console.log(finalUser);
         return(
-        <div className={"my-pretty-chart-container"}>
+            <div>
+            <Nav />  
+            <div className="welcome" >  
+            <div className="welcome-menu">
+            <div className={"my-pretty-chart-container"} >
             <Chart
-            width={screenWidth}
-            height={screeHeight}
+            width="103%"
+            height="400px"
             chartType="Bar"
             loader={<div>Loading Chart</div>}
             data={finalUser}
@@ -78,7 +82,12 @@ class RegionChart extends Component{
             // For tests
             rootProps={{ 'data-testid': '2' }}
             />
-      </div>
+             </div>
+            </div>   
+            </div>
+            </div>
+           
+       
         )
     }
 }

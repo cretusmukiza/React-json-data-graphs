@@ -70,18 +70,18 @@ class SchoolChart extends Component{
         var screenWidth="80%";
         var screeHeight="400px"  
         if(width<600){
-         screenWidth="200%";
-         screeHeight="400px"  
+         screenWidth="100%";
+         screeHeight="350px"  
         }
         console.log(this.state.data);
 
         if(this.state.data.length>0){
         return(
-            <div className="app">  
-            <Nav />  
-            <div className="welcome" >  
-            <div className="welcome-menu">
-            <div className={"my-pretty-chart-container"}>
+            <div>
+                 <Nav />  
+                <div className="welcome" >  
+                <div className="welcome-menu">
+                <div className={"my-pretty-chart-container"}>
             <select name="region" onChange={this.handleRegion}>
                {
                    linedata.map((line,index)=>(
@@ -113,9 +113,10 @@ class SchoolChart extends Component{
               
      
             </div>
-            </div>   
-          </div>
-          </div>
+                </div>   
+                </div>
+            </div>
+           
 
         
         )
@@ -123,6 +124,10 @@ class SchoolChart extends Component{
         else{
             return(
                 <div>
+                     <Nav />  
+                     <div className="welcome" >  
+                    <div className="welcome-menu">
+                    <div>
                 <select name="region" onChange={this.handleRegion}>
                {
                    linedata.map((line,index)=>(
@@ -133,6 +138,10 @@ class SchoolChart extends Component{
             <p>Please select the region</p>
             </div>
 
+                    </div>   
+                     </div>
+                </div>
+               
             )
         }
     }

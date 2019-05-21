@@ -8,12 +8,7 @@ import Nav from '../src/component/nav/nav';
 function App() {
   return (
     <div className="app">  
-      <Nav />  
-      <div className="welcome" >  
-      <div className="welcome-menu">
-         <Routes />
-      </div>   
-    </div>
+        <Routes />
     </div>
     
     

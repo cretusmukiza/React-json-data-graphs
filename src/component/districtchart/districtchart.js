@@ -4,6 +4,7 @@ import {data} from '../../data.js';
 import _ from 'lodash';
 import { type } from 'os';
 import '../chart/chart.css';
+import Nav from '../nav/nav'
 class DistrictChart extends Component{
     constructor(props){
         super(props);
@@ -55,25 +56,34 @@ class DistrictChart extends Component{
 
       
         return(
-        <div className={"my-pretty-chart-container"}>         
+            <div>
+            <Nav />  
+            <div className="welcome" >  
+            <div className="welcome-menu">
+            <div className={"my-pretty-chart-container"}>         
                
-                <Chart
-                    width={screenWidth}
-                    height={screeHeight}
-                    chartType="PieChart"
-                    loader={<div>Loading Chart</div>}
-                     data={
-                            finalUser
-                    }
-                    options={{
-                    title: `Dropout in  districts of ${this.state.region} region`,
-                    pieHole:0.3,
-                    is3D:false
-                     }}
-                    rootProps={{ 'data-testid': '1' }}
-                />
+            <Chart
+                width={screenWidth}
+                height={screeHeight}
+                chartType="PieChart"
+                loader={<div>Loading Chart</div>}
+                 data={
+                        finalUser
+                }
+                options={{
+                title: `Dropout in  districts of ${this.state.region} region`,
+                pieHole:0.3,
+                is3D:false
+                 }}
+                rootProps={{ 'data-testid': '1' }}
+            />
+        </div>
+    
+            </div>   
+          </div>
             </div>
-        
+           
+       
         )
         
      

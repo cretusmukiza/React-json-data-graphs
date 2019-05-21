@@ -18,7 +18,6 @@ class  Nav extends Component{
         >
         <div className="upper-nav">
             <NavLink to=""><FontAwesomeIcon icon="chart-pie" />Visualization</NavLink>
-            <NavLink to=""><FontAwesomeIcon icon="user-circle" />First last</NavLink>
         </div>
         <div className="lower-nav">
             <ul>
